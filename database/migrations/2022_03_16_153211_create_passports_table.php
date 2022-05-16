@@ -26,6 +26,7 @@ class CreatePassportsTable extends Migration
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('remark')->nullable();
+            
             $table->timestamps();
         });
     }

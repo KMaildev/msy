@@ -1,7 +1,6 @@
 </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script src="{{ asset('design/assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{ asset('design/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
@@ -12,9 +11,7 @@
 <script src="{{ asset('design/dist/js/sidebarmenu.js') }}"></script>
 <!--Custom JavaScript -->
 <script src="{{ asset('design/dist/js/custom.min.js') }}"></script>
-<!-- ============================================================== -->
-<!-- This page plugins -->
-<!-- ============================================================== -->
+
 <!--morris JavaScript -->
 <script src="{{ asset('design/assets/node_modules/raphael/raphael-min.js') }}"></script>
 <script src="{{ asset('design/assets/node_modules/morrisjs/morris.min.js') }}"></script>
@@ -34,8 +31,6 @@
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
 
 @yield('script')
-
-
 <script type="text/javascript">
     $('.del_confirm').click(function(event) {
         var form = $(this).closest("form");

@@ -22,4 +22,5 @@ Auth::routes(['register' => false]);
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('passport', 'PassportController');
+    Route::post('passport_import', 'PassportController@passport_import')->name('passport_import');
 });

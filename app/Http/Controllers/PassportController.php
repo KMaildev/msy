@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePassport;
 use App\Http\Requests\UpdatePassport;
+use App\Imports\PassportImport;
 use App\Models\Passport;
 use Illuminate\Http\Request;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class PassportController extends Controller
 {
@@ -16,9 +19,27 @@ class PassportController extends Controller
      */
     public function index()
     {
-        $passports = Passport::latest()->paginate(50);
-        return view('passport.index', compact('passports'))
-            ->with('i', (request()->input('page', 1) - 1) * 50);
+
+        $passports = Passport::orderBy('id', 'ASC')->paginate(50);
+        if (request('search')) {
+            $passports = Passport::where(function ($query) {
+                $query->where('name', 'Like', '%' . request('search') . '%');
+                $query->orWhere('father_name', 'Like', '%' . request('search') . '%');
+                $query->orWhere('nrc', 'Like', '%' . request('search') . '%');
+                $query->orWhere('date_of_birth', 'Like', '%' . request('search') . '%');
+                $query->orWhere('passport', 'Like', '%' . request('search') . '%');
+                $query->orWhere('local_agent_name', 'Like', '%' . request('search') . '%');
+                $query->orWhere('address', 'Like', '%' . request('search') . '%');
+                $query->orWhere('remark', 'Like', '%' . request('search') . '%');
+                $query->orWhere('phone', 'Like', '%' . request('search') . '%');
+            })->paginate(1000);
+        }
+
+        if (request('from_date') && request('to_date')) {
+            $passports = Passport::whereBetween('join_date', [request('from_date'), request('to_date')])->paginate(1000);;
+        }
+
+        return view('passport.index', compact('passports'));
     }
 
     /**
@@ -51,6 +72,7 @@ class PassportController extends Controller
         $Passport->address = $request->address;
         $Passport->gender = $request->gender;
         $Passport->remark = $request->remark;
+        $Passport->join_date = date("Y-m-d");
         $Passport->save();
         return redirect()->back()->with('success', 'Created successfully.');
     }
@@ -114,5 +136,15 @@ class PassportController extends Controller
         $passport = Passport::findOrFail($id);
         $passport->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function passport_import()
+    {
+        Excel::import(new PassportImport, request()->file('file'));
+        return redirect()->back()->with('success', 'Created successfully.');
     }
 }

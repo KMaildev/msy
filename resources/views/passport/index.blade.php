@@ -6,7 +6,13 @@
         </div>
         <div class="col-md-7 align-self-center text-end">
             <div class="d-flex justify-content-end align-items-center">
-                <a href="{{ route('passport.create') }}" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('passport.index') }}">Passport</a>
+                    </li>
+                    <li class="breadcrumb-item active">Table</li>
+                </ol>
+                <a href="{{ route('passport.create') }}" class="btn btn-success d-none d-lg-block m-l-15 text-white">
                     <i class="fa fa-plus-circle"></i> Create
                 </a>
             </div>
@@ -17,69 +23,117 @@
         <div class="col-lg-12 col-sm-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Success Table</h4>
-                    <div class="table-responsive">
-                        <table class="table color-table success-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Father Name</th>
-                                    <th>NRC</th>
-                                    <th>Date of Birth</th>
-                                    <th>Passport</th>
-                                    <th>Passport Date</th>
-                                    <th>Local Agent Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Gender</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($passports as $passport)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $passport->name }}</td>
-                                        <td>{{ $passport->father_name }}</td>
-                                        <td>{{ $passport->nrc }}</td>
-                                        <td>{{ $passport->date_of_birth }}</td>
-                                        <td>{{ $passport->passport }}</td>
-                                        <td>{{ $passport->passport_date }}</td>
-                                        <td>{{ $passport->local_agent_name }}</td>
-                                        <td>{{ $passport->phone }}</td>
-                                        <td>{{ $passport->address }}</td>
-                                        <td>{{ $passport->gender }}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('passport.edit', $passport->id) }}">Edit</a>
+                    <div class="row">
 
-                                                    <form action="{{ route('passport.destroy', $passport->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="dropdown-item del_confirm"
-                                                            id="confirm-text" data-toggle="tooltip">Delete</button>
-                                                    </form>
+                        <div class="col-lg-5 col-sm-12 col-md-5">
+                            <span>Export</span>
+                            <div class="button-group">
+                                <button type="button" class="btn waves-effect waves-light btn-success">
+                                    Export to Excel
+                                </button>
 
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        {!! $passports->links() !!}
+                                <button type="button" class="btn waves-effect waves-light btn-success">
+                                    Export to PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-12 col-md-3">
+                            <span>Search</span>
+                            <form action="{{ route('passport.index') }}" method="GET" autocomplete="off">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Search: Name or NRC"
+                                                name="search">
+                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-12 col-md-4">
+                            <span>Filter Search</span>
+                            <form action="{{ route('passport.index') }}" method="GET" autocomplete="off">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="date" class="form-control" name="from_date">
+                                            <input type="date" class="form-control" name="to_date">
+                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div>
+
+
+                <div class="table-responsive py-3">
+                    <span style="margin: 2px; font-weight: bold;">Total: {{ count($passports) }}</span>
+                    <table class="table color-table success-table color-bordered-table muted-bordered-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%;">#</th>
+                                <th style="width: 5%; text-align: center;">Name</th>
+                                <th style="width: 5%; text-align: center;">Father Name</th>
+                                <th style="width: 3%; text-align: center;">NRC</th>
+                                <th style="width: 3%; text-align: center;">Passport</th>
+                                <th style="width: 5%; text-align: center;">Passport Date</th>
+                                <th style="width: 5%; text-align: center;">Phone</th>
+                                <th style="width: 5%; text-align: center;">Address</th>
+                                <th style="width: 1%; text-align: center;">Gender</th>
+                                <th style="width: 1%; text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($passports as $key => $passport)
+                                <tr>
+                                    <td style="text-align: center;">{{ $key + 1 }}</td>
+                                    <td style="text-align: center;">{{ $passport->name }}</td>
+                                    <td style="text-align: center;">{{ $passport->father_name ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ $passport->nrc ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ $passport->passport ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ $passport->passport_date ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ $passport->phone ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ $passport->address ?? '-' }}</td>
+                                    <td style="text-align: center;">{{ ucfirst($passport->gender ?? '-') }}</td>
+                                    <td style="text-align: center;">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item"
+                                                    href="{{ route('passport.edit', $passport->id) }}">Edit</a>
+
+                                                <form action="{{ route('passport.destroy', $passport->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="dropdown-item del_confirm"
+                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
+                                                </form>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('passport.edit', $passport->id) }}">View
+                                                    Detail</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    {!! $passports->links() !!}
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 

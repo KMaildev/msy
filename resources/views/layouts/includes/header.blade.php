@@ -11,6 +11,7 @@
     <link href="{{ asset('design/assets/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <link href="{{ asset('design/assets/node_modules/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('design/dist/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('design/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>

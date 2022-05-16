@@ -119,14 +119,14 @@
                                     <div class="form-group">
                                         <label class="form-label">Gender</label>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="Male" value="male" name="gender"
+                                            <input type="radio" id="male" value="male" name="gender"
                                                 class="form-check-input" @if ($passport->gender == 'male') checked @endif>
-                                            <label class="form-check-label" for="Male">Male</label>
+                                            <label class="form-check-label" for="male">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="Female" value="female" name="gender"
+                                            <input type="radio" id="female" value="female" name="gender"
                                                 class="form-check-input" @if ($passport->gender == 'female') checked @endif>
-                                            <label class="form-check-label" for="Female">Female</label>
+                                            <label class="form-check-label" for="female">Female</label>
                                         </div>
                                     </div>
                                 </div>
