@@ -26,7 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('owic', 'OwicController');
     Route::resource('reject', 'RejectController');
     Route::resource('new_demand', 'NewDemandController');
+    Route::resource('old_demand', 'OldDemandController');
 
     Route::resource('overseas_agent', 'OverseasAgentController');
+    Route::get('overseas_agent_ajax/{id}', array('as' => 'overseas_agent_ajax', 'uses' => 'OverseasAgentController@dependentAjax'));
+    Route::get('overseas_agent_get_ajax/{id}', array('as' => 'overseas_agent_get_ajax', 'uses' => 'OverseasAgentController@findOverseaAgentAjax'));
+
     Route::resource('country', 'CountryController');
 });

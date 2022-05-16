@@ -8,7 +8,7 @@ use App\Models\Country;
 use App\Models\Demand;
 use Illuminate\Http\Request;
 
-class NewDemandController extends Controller
+class OldDemandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,13 @@ class NewDemandController extends Controller
      */
     public function index()
     {
-        $demands = Demand::where('demand_status', 'new_demand')->paginate(50);
+        $demands = Demand::where('demand_status', 'old_demand')->paginate(50);
         if (request('search')) {
             $demands = Demand::where(function ($query) {
                 $query->where('company_name', 'Like', '%' . request('search') . '%');
             })->paginate(1000);
         }
-        return view('new_demand.index', compact('demands'));
+        return view('old_demand.index', compact('demands'));
     }
 
     /**
@@ -34,7 +34,7 @@ class NewDemandController extends Controller
     public function create()
     {
         $countryies = Country::all();
-        return view('new_demand.create', compact('countryies'));
+        return view('old_demand.create', compact('countryies'));
     }
 
     /**
@@ -79,7 +79,7 @@ class NewDemandController extends Controller
     {
         $demand = Demand::findOrFail($id);
         $countryies = Country::all();
-        return view('new_demand.edit', compact('demand', 'countryies'));
+        return view('old_demand.edit', compact('demand', 'countryies'));
     }
 
     /**

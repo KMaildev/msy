@@ -23,6 +23,14 @@
 <script src="{{ asset('design/assets/node_modules/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('design/assets/node_modules/sweetalert2/sweet-alert.init.js') }}"></script>
 
+<script src="{{ asset('design/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript">
+
+
+<script src = "{{ asset('design/assets/node_modules/bootstrap-select/bootstrap-select.min.js') }}"
+    type = "text/javascript" >
+</script>
+</script>
+
 <script>
     $(function() {
         $('#chat, #comment, #todo').perfectScrollbar();
@@ -52,9 +60,14 @@
             }
         });
     });
+
+
+
+    $(function() {
+        $(".select2").select2();
+    });
 </script>
 
-
+<script type="text/javascript" src="{{ url('ajax/demand.js') }}"></script>
 </body>
-
 </html>

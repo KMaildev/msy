@@ -114,4 +114,20 @@ class OverseasAgentController extends Controller
         $oversea->delete();
         return redirect()->back()->with('success', 'Process is completed.');
     }
+
+
+
+
+    public function dependentAjax($id)
+    {
+        $overseas_agencies = OverseasAgency::get()->where('countrie_id', $id);
+        return json_encode($overseas_agencies);
+    }
+
+
+    public function findOverseaAgentAjax($id)
+    {
+        $overseas_agency = OverseasAgency::findOrFail($id);
+        return json_encode($overseas_agency);
+    }
 }

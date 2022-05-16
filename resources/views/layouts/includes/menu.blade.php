@@ -43,6 +43,14 @@
                     </a>
                 </li>
 
+
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('old_demand.index') }}" aria-expanded="false">
+                        <span class="hide-menu">Old Demand</span>
+                    </a>
+                </li>
+
+
                 <li>
                     <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
                         aria-expanded="false">

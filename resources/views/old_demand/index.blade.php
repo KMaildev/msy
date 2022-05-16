@@ -2,17 +2,17 @@
 @section('content')
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor">New Demand</h4>
+            <h4 class="text-themecolor">Old Demand</h4>
         </div>
         <div class="col-md-7 align-self-center text-end">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('new_demand.index') }}">New Demand</a>
+                        <a href="{{ route('old_demand.index') }}">Old Demand</a>
                     </li>
                     <li class="breadcrumb-item active">Table</li>
                 </ol>
-                <a href="{{ route('new_demand.create') }}" class="btn btn-success d-none d-lg-block m-l-15 text-white">
+                <a href="{{ route('old_demand.create') }}" class="btn btn-success d-none d-lg-block m-l-15 text-white">
                     <i class="fa fa-plus-circle"></i> Create
                 </a>
             </div>
@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-12 col-md-4">
                             <span>Search</span>
-                            <form action="{{ route('new_demand.index') }}" method="GET" autocomplete="off">
+                            <form action="{{ route('old_demand.index') }}" method="GET" autocomplete="off">
                                 <div class="form-group">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
@@ -111,9 +111,9 @@
                                                 </a>
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('new_demand.edit', $demand->id) }}">Edit</a>
+                                                    href="{{ route('old_demand.edit', $demand->id) }}">Edit</a>
 
-                                                <form action="{{ route('new_demand.destroy', $demand->id) }}"
+                                                <form action="{{ route('old_demand.destroy', $demand->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
