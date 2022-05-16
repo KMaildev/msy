@@ -29,6 +29,21 @@
                     </a>
                 </li>
 
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
+                        aria-expanded="false">
+                        <span class="hide-menu">Overseas Agent</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('country.index') }}"
+                        aria-expanded="false">
+                        <span class="hide-menu">Country</span>
+                    </a>
+                </li>
+
+
             </ul>
         </nav>
     </div>
