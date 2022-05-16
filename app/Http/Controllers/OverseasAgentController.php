@@ -52,6 +52,7 @@ class OverseasAgentController extends Controller
         $oversea->company_email = $request->company_email;
         $oversea->company_address = $request->company_address;
         $oversea->countrie_id = $request->countrie_id;
+        $oversea->contact = $request->contact;
         $oversea->save();
         return redirect()->back()->with('success', 'Process is completed.');
     }
@@ -96,6 +97,7 @@ class OverseasAgentController extends Controller
         $oversea->company_email = $request->company_email;
         $oversea->company_address = $request->company_address;
         $oversea->countrie_id = $request->countrie_id;
+        $oversea->contact = $request->contact;
         $oversea->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }

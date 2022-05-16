@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePassport;
-use App\Http\Requests\UpdatePassport;
-use App\Imports\PassportImport;
+use App\Http\Requests\UpdateReject;
 use App\Models\Passport;
 use Illuminate\Http\Request;
 
-use Maatwebsite\Excel\Facades\Excel;
-
-class PassportController extends Controller
+class RejectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +15,7 @@ class PassportController extends Controller
      */
     public function index()
     {
-        $passports = Passport::where('reject_status', NULL)->paginate(50);
+        $passports = Passport::where('reject_status', 'rejected')->paginate(50);
         if (request('search')) {
             $passports = Passport::where(function ($query) {
                 $query->where('name', 'Like', '%' . request('search') . '%');
@@ -38,7 +34,7 @@ class PassportController extends Controller
             $passports = Passport::whereBetween('join_date', [request('from_date'), request('to_date')])->paginate(1000);;
         }
 
-        return view('passport.index', compact('passports'));
+        return view('reject.index', compact('passports'));
     }
 
     /**
@@ -48,7 +44,7 @@ class PassportController extends Controller
      */
     public function create()
     {
-        return view('passport.create');
+        //
     }
 
     /**
@@ -57,23 +53,9 @@ class PassportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePassport $request)
+    public function store(Request $request)
     {
-        $Passport = new Passport();
-        $Passport->name = $request->name;
-        $Passport->father_name = $request->father_name;
-        $Passport->nrc = $request->nrc;
-        $Passport->date_of_birth = $request->date_of_birth;
-        $Passport->passport = $request->passport;
-        $Passport->passport_date = $request->passport_date;
-        $Passport->local_agent_name = $request->local_agent_name;
-        $Passport->phone = $request->phone;
-        $Passport->address = $request->address;
-        $Passport->gender = $request->gender;
-        $Passport->remark = $request->remark;
-        $Passport->join_date = date("Y-m-d");
-        $Passport->save();
-        return redirect()->back()->with('success', 'Created successfully.');
+        //
     }
 
     /**
@@ -96,7 +78,7 @@ class PassportController extends Controller
     public function edit($id)
     {
         $passport = Passport::findOrFail($id);
-        return view('passport.edit', compact('passport'));
+        return view('reject.edit', compact('passport'));
     }
 
     /**
@@ -106,22 +88,14 @@ class PassportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePassport $request, $id)
+    public function update(UpdateReject $request, $id)
     {
         $Passport = Passport::findOrFail($id);
-        $Passport->name = $request->name;
-        $Passport->father_name = $request->father_name;
-        $Passport->nrc = $request->nrc;
-        $Passport->date_of_birth = $request->date_of_birth;
-        $Passport->passport = $request->passport;
-        $Passport->passport_date = $request->passport_date;
-        $Passport->local_agent_name = $request->local_agent_name;
-        $Passport->phone = $request->phone;
-        $Passport->address = $request->address;
-        $Passport->gender = $request->gender;
-        $Passport->remark = $request->remark;
+        $Passport->reject_status = 'rejected';
+        $Passport->reject_date = $request->reject_date;
+        $Passport->reject_reason = $request->reject_reason;
         $Passport->update();
-        return redirect()->back()->with('success', 'Updated successfully.');
+        return redirect()->back()->with('success', 'Process is completed.');
     }
 
     /**
@@ -132,18 +106,6 @@ class PassportController extends Controller
      */
     public function destroy($id)
     {
-        $passport = Passport::findOrFail($id);
-        $passport->delete();
-        return redirect()->back()->with('success', 'Deleted successfully.');
-    }
-
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function passport_import()
-    {
-        Excel::import(new PassportImport, request()->file('file'));
-        return redirect()->back()->with('success', 'Created successfully.');
+        //
     }
 }

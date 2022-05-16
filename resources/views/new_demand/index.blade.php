@@ -42,7 +42,7 @@
 
 
                 <div class="table-responsive py-3">
-                    <span style="margin: 2px; font-weight: bold;">Total: {{ count($overseas_agencies) }}</span>
+                    <span style="margin: 2px; font-weight: bold;">Total: </span>
                     <table class="table color-table success-table color-bordered-table muted-bordered-table">
                         <thead>
                             <tr>
@@ -58,63 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($overseas_agencies as $key => $overseas_agency)
-                                <tr>
-                                    <td>
-                                        {{ $key + 1 }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->company_name }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->contact }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->type_of_company }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->company_phone }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->company_email }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->company_address }}
-                                    </td>
-
-                                    <td>
-                                        {{ $overseas_agency->countries_table->country }}
-                                    </td>
-
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item"
-                                                    href="{{ route('overseas_agent.edit', $overseas_agency->id) }}">Edit</a>
-
-                                                <form
-                                                    action="{{ route('overseas_agent.destroy', $overseas_agency->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="dropdown-item del_confirm"
-                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                    
                         </tbody>
                     </table>
 

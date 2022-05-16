@@ -29,6 +29,20 @@
                     </a>
                 </li>
 
+
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('reject.index') }}" aria-expanded="false">
+                        <span class="hide-menu">Reject Passport</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('new_demand.index') }}" aria-expanded="false">
+                        <span class="hide-menu">New Demand</span>
+                    </a>
+                </li>
+
                 <li>
                     <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
                         aria-expanded="false">

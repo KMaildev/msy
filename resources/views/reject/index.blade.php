@@ -4,19 +4,6 @@
         <div class="col-md-5 align-self-center">
             <h4 class="text-themecolor">Passport</h4>
         </div>
-        <div class="col-md-7 align-self-center text-end">
-            <div class="d-flex justify-content-end align-items-center">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('passport.index') }}">Passport</a>
-                    </li>
-                    <li class="breadcrumb-item active">Table</li>
-                </ol>
-                <a href="{{ route('passport.create') }}" class="btn btn-success d-none d-lg-block m-l-15 text-white">
-                    <i class="fa fa-plus-circle"></i> Create
-                </a>
-            </div>
-        </div>
     </div>
 
     <div class="row">
@@ -40,7 +27,7 @@
 
                         <div class="col-lg-3 col-sm-12 col-md-3">
                             <span>Search</span>
-                            <form action="{{ route('passport.index') }}" method="GET" autocomplete="off">
+                            <form action="{{ route('reject.index') }}" method="GET" autocomplete="off">
                                 <div class="form-group">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
@@ -55,7 +42,7 @@
 
                         <div class="col-lg-4 col-sm-12 col-md-4">
                             <span>Filter Search</span>
-                            <form action="{{ route('passport.index') }}" method="GET" autocomplete="off">
+                            <form action="{{ route('reject.index') }}" method="GET" autocomplete="off">
                                 <div class="form-group">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
@@ -90,52 +77,53 @@
                         </thead>
                         <tbody>
                             @foreach ($passports as $key => $passport)
-                                <tr>
-                                    <td style="text-align: center;">{{ $key + 1 }}</td>
-                                    <td style="text-align: center;">{{ $passport->name }}</td>
-                                    <td style="text-align: center;">{{ $passport->father_name ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->nrc ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->passport ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->passport_date ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->phone ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->address ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ ucfirst($passport->gender ?? '-') }}</td>
-                                    <td style="text-align: center;">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <div class="dropdown-menu">
+                                @if ($passport->reject_status == 'rejected')
+                                    <tr>
+                                        <td style="text-align: center;">{{ $key + 1 }}</td>
+                                        <td style="text-align: center;">{{ $passport->name }}</td>
+                                        <td style="text-align: center;">{{ $passport->father_name ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ $passport->nrc ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ $passport->passport ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ $passport->passport_date ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ $passport->phone ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ $passport->address ?? '-' }}</td>
+                                        <td style="text-align: center;">{{ ucfirst($passport->gender ?? '-') }}</td>
+                                        <td style="text-align: center;">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu">
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('owic.edit', $passport->id) }}">OWIC</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('owic.edit', $passport->id) }}">OWIC</a>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('reject.edit', $passport->id) }}">Reject</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('reject.edit', $passport->id) }}">Reject</a>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('passport.edit', $passport->id) }}">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('passport.edit', $passport->id) }}">Edit</a>
 
-                                                <form action="{{ route('passport.destroy', $passport->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="dropdown-item del_confirm"
-                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
-                                                </form>
+                                                    <form action="{{ route('passport.destroy', $passport->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="button" class="dropdown-item del_confirm"
+                                                            id="confirm-text" data-toggle="tooltip">Delete</button>
+                                                    </form>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('passport.edit', $passport->id) }}">View
-                                                    Detail</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('passport.edit', $passport->id) }}">View
+                                                        Detail</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
-
                     {!! $passports->links() !!}
                 </div>
             </div>

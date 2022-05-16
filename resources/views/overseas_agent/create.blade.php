@@ -34,6 +34,20 @@
 
 
                                                     <div class="col-md-6">
+                                                        <div class="form-group @error('contact') has-danger @enderror">
+                                                            <label class="form-label">Contact</label>
+                                                            <input type="text"
+                                                                class="form-control @error('contact') form-control-danger @enderror"
+                                                                name="contact" value="{{ old('contact') }}">
+                                                            @error('contact')
+                                                                <div class="form-control-feedback" style="color: red;">
+                                                                    {{ $message }} </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
                                                         <div
                                                             class="form-group @error('type_of_company') has-danger @enderror">
                                                             <label class="form-label">Type of Company</label>
