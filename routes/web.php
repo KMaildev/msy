@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('passport', 'PassportController');
     Route::post('passport_import', 'PassportController@passport_import')->name('passport_import');
+    Route::get('passport_export', 'PassportController@passport_export')->name('passport_export');
     Route::resource('owic', 'OwicController');
     Route::resource('reject', 'RejectController');
     Route::resource('new_demand', 'NewDemandController');

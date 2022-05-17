@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PassportExport;
 use App\Http\Requests\StorePassport;
 use App\Http\Requests\UpdatePassport;
 use App\Imports\PassportImport;
@@ -145,5 +146,16 @@ class PassportController extends Controller
     {
         Excel::import(new PassportImport, request()->file('file'));
         return redirect()->back()->with('success', 'Created successfully.');
+    }
+
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function passport_export()
+    {
+        $passports = Passport::all();
+        return Excel::download(new PassportExport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

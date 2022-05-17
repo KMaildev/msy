@@ -28,9 +28,9 @@
                         <div class="col-lg-5 col-sm-12 col-md-5">
                             <span>Export</span>
                             <div class="button-group">
-                                <button type="button" class="btn waves-effect waves-light btn-success">
+                                <a href="{{  route('passport_export')  }}" class="btn waves-effect waves-light btn-success">
                                     Export to Excel
-                                </button>
+                                </a>
 
                                 <button type="button" class="btn waves-effect waves-light btn-success">
                                     Export to PDF
