@@ -59,7 +59,7 @@
 
 
                 <li>
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{ route('sending.index') }}" aria-expanded="false">
                         <span class="hide-menu">Sending</span>
                     </a>
                 </li>

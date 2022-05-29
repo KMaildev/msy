@@ -10,4 +10,9 @@ class Demand extends Model
     {
         return $this->belongsTo(OverseasAgency::class, 'overseas_agencie_id', 'id');
     }
+
+    public function contracts_table()
+    {
+        return $this->belongsTo(Contract::class, 'id', 'demand_id');
+    }
 }

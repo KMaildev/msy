@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('contract', 'ContractController');
     Route::get('create_contract/{id}', array('as' => 'create_contract', 'uses' => 'ContractController@create'));
 
+    Route::resource('sending', 'SendingController');
+    Route::get('create_sending/{id}', array('as' => 'create_sending', 'uses' => 'SendingController@create'));
+
     Route::resource('overseas_agent', 'OverseasAgentController');
     Route::get('overseas_agent_ajax/{id}', array('as' => 'overseas_agent_ajax', 'uses' => 'OverseasAgentController@dependentAjax'));
     Route::get('overseas_agent_get_ajax/{id}', array('as' => 'overseas_agent_get_ajax', 'uses' => 'OverseasAgentController@findOverseaAgentAjax'));

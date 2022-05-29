@@ -22,16 +22,12 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="col-lg-5 col-sm-12 col-md-5">
+                        <div class="col-lg-9 col-sm-12 col-md-9">
                             <span>Export</span>
                             <div class="button-group">
                                 <a href="{{ route('passport_export') }}" class="btn waves-effect waves-light btn-success">
                                     Export to Excel
                                 </a>
-
-                                <button type="button" class="btn waves-effect waves-light btn-success">
-                                    Export to PDF
-                                </button>
                             </div>
                         </div>
 
@@ -41,23 +37,7 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Search: Name or NRC"
-                                                name="search">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-12 col-md-4">
-                            <span>Filter Search</span>
-                            <form action="{{ route('contract.index') }}" method="GET" autocomplete="off">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input type="date" class="form-control" name="from_date">
-                                            <input type="date" class="form-control" name="to_date">
+                                            <input type="text" class="form-control" name="search">
                                             <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
                                         </div>
                                     </div>
@@ -69,7 +49,7 @@
 
 
                 <div class="table-responsive py-3">
-                    <span style="margin: 2px; font-weight: bold;">Total: </span>
+                    <span style="margin: 2px; font-weight: bold;">Total: {{ count($contracts) }}</span>
                     <table class="table color-table success-table color-bordered-table muted-bordered-table">
                         <thead>
                             <tr>
@@ -124,6 +104,12 @@
 
                                                 <a class="dropdown-item"
                                                     href="{{ route('contract.edit', $contract->id) }}">Edit</a>
+
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('create_sending', $contract->demand_id) }}">
+                                                    Sending
+                                                </a>
 
                                                 <form action="{{ route('contract.destroy', $contract->id) }}"
                                                     method="POST">

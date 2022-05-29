@@ -112,6 +112,11 @@
                                                 </a>
 
                                                 <a class="dropdown-item"
+                                                    href="{{ route('create_sending', $demand->id) }}">
+                                                    Sending
+                                                </a>
+
+                                                <a class="dropdown-item"
                                                     href="{{ route('new_demand.edit', $demand->id) }}">Edit</a>
 
                                                 <form action="{{ route('new_demand.destroy', $demand->id) }}"
