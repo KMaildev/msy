@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDemand;
 use App\Http\Requests\UpdateDemand;
 use App\Models\Country;
 use App\Models\Demand;
+use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
 
 class NewDemandController extends Controller
@@ -17,7 +18,7 @@ class NewDemandController extends Controller
      */
     public function index()
     {
-        $demands = Demand::where('demand_status', 'new_demand')->paginate(50);
+        $demands = Demand::where('demand_status', 'new_demand')->paginate(1000);
         if (request('search')) {
             $demands = Demand::where(function ($query) {
                 $query->where('company_name', 'Like', '%' . request('search') . '%');
@@ -54,6 +55,8 @@ class NewDemandController extends Controller
         $demand->demand_date = $request->demand_date;
         $demand->cabinet_date = $request->cabinet_date;
         $demand->demand_status = $request->demand_status;
+        $demand->issue_date = $request->issue_date;
+        $demand->issue_number = $request->issue_number;
         $demand->save();
         return redirect()->back()->with('success', 'Process is completed.');
     }
@@ -79,7 +82,8 @@ class NewDemandController extends Controller
     {
         $demand = Demand::findOrFail($id);
         $countryies = Country::all();
-        return view('new_demand.edit', compact('demand', 'countryies'));
+        $overseas_agencyies = OverseasAgency::all();
+        return view('new_demand.edit', compact('demand', 'countryies', 'overseas_agencyies'));
     }
 
     /**
@@ -100,6 +104,8 @@ class NewDemandController extends Controller
         $demand->demand_date = $request->demand_date;
         $demand->cabinet_date = $request->cabinet_date;
         $demand->demand_status = $request->demand_status;
+        $demand->issue_date = $request->issue_date;
+        $demand->issue_number = $request->issue_number;
         $demand->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }

@@ -67,7 +67,7 @@
                                     </td>
 
                                     <td>
-                                        {{ $demand->company_name }}
+                                        {{ $demand->overseas_agencies_table->company_name ?? '' }}
                                     </td>
 
                                     <td style="text-align: right; font-weight: bold">
@@ -87,11 +87,11 @@
                                     </td>
 
                                     <td>
-                                        NULL
+                                        {{ $demand->contracts_table->contract_date ?? '' }}
                                     </td>
 
                                     <td>
-                                        NULL
+                                        {{ $demand->sendings_table->sending_date ?? '' }}
                                     </td>
 
                                     <td>
@@ -109,11 +109,6 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('create_contract', $demand->id) }}">
                                                     Contract
-                                                </a>
-
-                                                <a class="dropdown-item"
-                                                    href="{{ route('create_sending', $demand->id) }}">
-                                                    Sending
                                                 </a>
 
                                                 <a class="dropdown-item"

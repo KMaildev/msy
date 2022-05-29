@@ -69,7 +69,14 @@
                                                             </label>
                                                             <select class="select2 form-control form-select"
                                                                 name="overseas_agencie_id">
+                                                                @foreach ($overseas_agencyies as $overseas_agency)
+                                                                    <option value="{{ $overseas_agency->id }}"
+                                                                        @if ($demand->overseas_agencie_id == $overseas_agency->id) selected @endif>
+                                                                        {{ $overseas_agency->company_name }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
+
                                                             @error('overseas_agencie_id')
                                                                 <div class="form-control-feedback">
                                                                     {{ $message }}
@@ -195,5 +202,25 @@
             var t = parseInt(female) + parseInt(male);
             total.value = t;
         }
+
+
+        function autoAjaxCallContact() {
+            var overseas_agencies = '{{ $demand->overseas_agencie_id }}';
+            if (overseas_agencies) {
+                $.ajax({
+                    url: "/overseas_agent_get_ajax/" + overseas_agencies,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            contact.value = data.contact;
+                        } else {
+                            contact.val = "Null";
+                        }
+                    },
+                });
+            }
+        }
+        autoAjaxCallContact();
     </script>
 @endsection

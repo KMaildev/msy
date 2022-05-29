@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDemand;
 use App\Http\Requests\UpdateDemand;
 use App\Models\Country;
 use App\Models\Demand;
+use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
 
 class OldDemandController extends Controller
@@ -17,7 +18,7 @@ class OldDemandController extends Controller
      */
     public function index()
     {
-        $demands = Demand::where('demand_status', 'old_demand')->paginate(50);
+        $demands = Demand::where('demand_status', 'old_demand')->paginate(1000);
         if (request('search')) {
             $demands = Demand::where(function ($query) {
                 $query->where('company_name', 'Like', '%' . request('search') . '%');
@@ -79,7 +80,8 @@ class OldDemandController extends Controller
     {
         $demand = Demand::findOrFail($id);
         $countryies = Country::all();
-        return view('old_demand.edit', compact('demand', 'countryies'));
+        $overseas_agencyies = OverseasAgency::all();
+        return view('old_demand.edit', compact('demand', 'countryies', 'overseas_agencyies'));
     }
 
     /**

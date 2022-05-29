@@ -8,7 +8,7 @@
                 </div>
                 <form action="{{ route('contract.store') }}" method="POST" autocomplete="off" id="create-form">
                     @csrf
-                    <input type="hidden" name="demand_id" value="{{ $demand->overseas_agencies_table->id ?? 0 }}">
+                    <input type="hidden" name="demand_id" value="{{ $demand->id }}">
                     <div class="card-body">
                         <h4 class="card-title">Demand Information</h4>
                     </div>

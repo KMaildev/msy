@@ -55,7 +55,8 @@
                                                                 @endforeach
                                                             </select>
                                                             @error('countrie_id')
-                                                                <div class="form-control-feedback"> {{ $message }}
+                                                                <div class="form-control-feedback">
+                                                                    {{ $message }}
                                                                 </div>
                                                             @enderror
                                                         </div>
@@ -69,7 +70,14 @@
                                                             </label>
                                                             <select class="select2 form-control form-select"
                                                                 name="overseas_agencie_id">
+                                                                @foreach ($overseas_agencyies as $overseas_agency)
+                                                                    <option value="{{ $overseas_agency->id }}"
+                                                                        @if ($demand->overseas_agencie_id == $overseas_agency->id) selected @endif>
+                                                                        {{ $overseas_agency->company_name }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
+
                                                             @error('overseas_agencie_id')
                                                                 <div class="form-control-feedback">
                                                                     {{ $message }}
@@ -162,6 +170,40 @@
                                                         </div>
                                                     </div>
 
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div
+                                                                class="form-group @error('issue_date') has-danger @enderror">
+                                                                <label class="form-label">Issue Date</label>
+                                                                <input type="text"
+                                                                    class="form-control @error('issue_date') form-control-danger @enderror"
+                                                                    name="issue_date" value="{{ $demand->issue_date }}">
+                                                                @error('issue_date')
+                                                                    <div class="form-control-feedback" style="color: red;">
+                                                                        {{ $message }} </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-md-4">
+                                                            <div
+                                                                class="form-group @error('issue_number') has-danger @enderror">
+                                                                <label class="form-label">Issue Number</label>
+                                                                <input type="text"
+                                                                    class="form-control @error('issue_number') form-control-danger @enderror"
+                                                                    name="issue_number"
+                                                                    value="{{ $demand->issue_number }}">
+                                                                @error('issue_number')
+                                                                    <div class="form-control-feedback" style="color: red;">
+                                                                        {{ $message }} </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="form-actions">
@@ -195,5 +237,25 @@
             var t = parseInt(female) + parseInt(male);
             total.value = t;
         }
+
+
+        function autoAjaxCallContact() {
+            var overseas_agencies = '{{ $demand->overseas_agencie_id }}';
+            if (overseas_agencies) {
+                $.ajax({
+                    url: "/overseas_agent_get_ajax/" + overseas_agencies,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            contact.value = data.contact;
+                        } else {
+                            contact.val = "Null";
+                        }
+                    },
+                });
+            }
+        }
+        autoAjaxCallContact();
     </script>
 @endsection

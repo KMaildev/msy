@@ -8,7 +8,7 @@
                 </div>
                 <form action="{{ route('sending.store') }}" method="POST" autocomplete="off" id="create-form">
                     @csrf
-                    <input type="hidden" name="demand_id" value="{{ $demand->overseas_agencies_table->id }}">
+                    <input type="hidden" name="demand_id" value="{{ $demand->id }}">
                     <input type="hidden" name="contract_id" value="{{ $demand->contracts_table->id }}">
 
                     <div class="card-body">

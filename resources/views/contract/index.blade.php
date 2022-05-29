@@ -125,6 +125,18 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tr>
+                            <th colspan="3">Total</th>
+                            <th style="text-align: right; font-weight: bold">
+                                {{ $contract->sum('contract_male') }}
+                            </th>
+                            <th style="text-align: right; font-weight: bold">
+                                {{ $contract->sum('contract_female') }}
+                            </th>
+                            <th style="text-align: right; font-weight: bold">
+                                {{ $contract->sum('contract_male') + $contract->sum('contract_female') }}
+                            </th>
+                        </tr>
                     </table>
                 </div>
             </div>

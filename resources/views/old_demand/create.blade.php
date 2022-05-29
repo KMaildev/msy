@@ -86,7 +86,6 @@
                                                         </div>
                                                     </div>
 
-
                                                     <div class="col-md-4">
                                                         <div class="form-group @error('male') has-danger @enderror">
                                                             <label class="form-label">Male</label>
