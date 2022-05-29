@@ -67,6 +67,7 @@ class PassportController extends Controller
         $Passport->date_of_birth = $request->date_of_birth;
         $Passport->passport = $request->passport;
         $Passport->passport_date = $request->passport_date;
+        $Passport->place_of_passport = $request->place_of_passport;
         $Passport->local_agent_name = $request->local_agent_name;
         $Passport->phone = $request->phone;
         $Passport->address = $request->address;
@@ -116,6 +117,7 @@ class PassportController extends Controller
         $Passport->date_of_birth = $request->date_of_birth;
         $Passport->passport = $request->passport;
         $Passport->passport_date = $request->passport_date;
+        $Passport->place_of_passport = $request->place_of_passport;
         $Passport->local_agent_name = $request->local_agent_name;
         $Passport->phone = $request->phone;
         $Passport->address = $request->address;

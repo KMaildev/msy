@@ -52,6 +52,27 @@
 
 
                 <li>
+                    <a class="waves-effect waves-dark" href="{{ route('contract.index') }}" aria-expanded="false">
+                        <span class="hide-menu">Contract</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                        <span class="hide-menu">Sending</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
+                        aria-expanded="false">
+                        <span class="hide-menu">File Manager</span>
+                    </a>
+                </li>
+
+                <li>
                     <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
                         aria-expanded="false">
                         <span class="hide-menu">Overseas Agent</span>
@@ -59,8 +80,7 @@
                 </li>
 
                 <li>
-                    <a class="waves-effect waves-dark" href="{{ route('country.index') }}"
-                        aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{ route('country.index') }}" aria-expanded="false">
                         <span class="hide-menu">Country</span>
                     </a>
                 </li>

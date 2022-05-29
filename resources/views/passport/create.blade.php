@@ -99,7 +99,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div
                                                                     class="form-group @error('passport') has-danger @enderror">
                                                                     <label class="form-label">Passport</label>
@@ -112,10 +112,10 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div
                                                                     class="form-group @error('passport_date') has-danger @enderror">
-                                                                    <label class="form-label">Passport Date</label>
+                                                                    <label class="form-label">Date of Passport</label>
                                                                     <input type="text" class="form-control"
                                                                         name="passport_date">
                                                                     @error('passport_date')
@@ -125,6 +125,18 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-md-4">
+                                                                <div
+                                                                    class="form-group @error('place_of_passport') has-danger @enderror">
+                                                                    <label class="form-label">Place of Passport</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="place_of_passport">
+                                                                    @error('place_of_passport')
+                                                                        <div class="form-control-feedback"> {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
 
                                                             <div class="col-md-6">
                                                                 <div

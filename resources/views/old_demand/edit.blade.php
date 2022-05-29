@@ -192,7 +192,7 @@
         function MaleFemaleTotalCalc() {
             var male = document.getElementById("male").value;
             var female = document.getElementById("female").value;
-            var t = parseInt(female) + parseInt(male)˝;
+            var t = parseInt(female) + parseInt(male);
             total.value = t;
         }
     </script>

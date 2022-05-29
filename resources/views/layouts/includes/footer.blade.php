@@ -24,9 +24,7 @@
 <script src="{{ asset('design/assets/node_modules/sweetalert2/sweet-alert.init.js') }}"></script>
 
 <script src="{{ asset('design/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript">
-
-
-<script src = "{{ asset('design/assets/node_modules/bootstrap-select/bootstrap-select.min.js') }}"
+    < script src = "{{ asset('design/assets/node_modules/bootstrap-select/bootstrap-select.min.js') }}"
     type = "text/javascript" >
 </script>
 </script>
@@ -62,7 +60,6 @@
     });
 
 
-
     $(function() {
         $(".select2").select2();
     });
@@ -70,4 +67,5 @@
 
 <script type="text/javascript" src="{{ url('ajax/demand.js') }}"></script>
 </body>
+
 </html>

@@ -92,7 +92,8 @@
                                                             <label class="form-label">Male</label>
                                                             <input type="text"
                                                                 class="form-control @error('male') form-control-danger @enderror"
-                                                                name="male" oninput="MaleFemaleTotalCalc()" id="male" value="0">
+                                                                name="male" oninput="MaleFemaleTotalCalc()" id="male"
+                                                                value="0">
                                                             @error('male')
                                                                 <div class="form-control-feedback" style="color: red;">
                                                                     {{ $message }} </div>
@@ -105,7 +106,8 @@
                                                             <label class="form-label">Female</label>
                                                             <input type="text"
                                                                 class="form-control @error('female') form-control-danger @enderror"
-                                                                name="female" oninput="MaleFemaleTotalCalc()" id="female" value="0">
+                                                                name="female" oninput="MaleFemaleTotalCalc()" id="female"
+                                                                value="0">
                                                             @error('female')
                                                                 <div class="form-control-feedback" style="color: red;">
                                                                     {{ $message }} </div>
@@ -131,7 +133,8 @@
                                                         <div class="form-group @error('demand_date') has-danger @enderror">
                                                             <label class="form-label">Demand Date</label>
                                                             <input type="text"
-                                                                class="form-control @error('demand_date') form-control-danger @enderror" name="demand_date">
+                                                                class="form-control @error('demand_date') form-control-danger @enderror"
+                                                                name="demand_date">
                                                             @error('demand_date')
                                                                 <div class="form-control-feedback" style="color: red;">
                                                                     {{ $message }} </div>
@@ -145,7 +148,8 @@
                                                             class="form-group @error('cabinet_date') has-danger @enderror">
                                                             <label class="form-label">Cabinet Date</label>
                                                             <input type="text"
-                                                                class="form-control @error('cabinet_date') form-control-danger @enderror" name="cabinet_date">
+                                                                class="form-control @error('cabinet_date') form-control-danger @enderror"
+                                                                name="cabinet_date">
                                                             @error('cabinet_date')
                                                                 <div class="form-control-feedback" style="color: red;">
                                                                     {{ $message }} </div>
@@ -183,7 +187,7 @@
         function MaleFemaleTotalCalc() {
             var male = document.getElementById("male").value;
             var female = document.getElementById("female").value;
-            var t = parseInt(female) + parseInt(male)˝;
+            var t = parseInt(female) + parseInt(male);
             total.value = t;
         }
     </script>

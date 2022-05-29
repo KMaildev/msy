@@ -106,8 +106,9 @@
                                                     View Detail
                                                 </a>
 
-                                                <a class="dropdown-item" href="#">
-                                                    Operations
+                                                <a class="dropdown-item"
+                                                    href="{{ route('create_contract', $demand->id) }}">
+                                                    Contract
                                                 </a>
 
                                                 <a class="dropdown-item"
