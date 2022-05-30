@@ -19,8 +19,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -43,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('overseas_agent_get_ajax/{id}', array('as' => 'overseas_agent_get_ajax', 'uses' => 'OverseasAgentController@findOverseaAgentAjax'));
 
     Route::resource('country', 'CountryController');
+
+    Route::resource('labour_management', 'LabourManagementController');
+    Route::get('add_labour/{id}', array('as' => 'add_labour', 'uses' => 'LabourManagementController@create'));
 
     Route::view('/file_manager', 'file_manager.index')->name('file_manager.index');
 });

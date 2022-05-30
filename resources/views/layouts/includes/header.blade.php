@@ -27,6 +27,11 @@
         type="text/css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('design/assets/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('design/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}">
 </head>
 
 <body class="horizontal-nav skin-megna fixed-layout">

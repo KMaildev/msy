@@ -102,10 +102,6 @@
                                             </button>
                                             <div class="dropdown-menu">
 
-                                                <a class="dropdown-item" href="#">
-                                                    View Detail
-                                                </a>
-
                                                 <a class="dropdown-item"
                                                     href="{{ route('create_contract', $demand->id) }}">
                                                     Contract

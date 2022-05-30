@@ -20,7 +20,7 @@ class PassportController extends Controller
      */
     public function index()
     {
-        $passports = Passport::where('reject_status', NULL)->paginate(50);
+        $passports = Passport::where('reject_status', NULL)->paginate(1000);
         if (request('search')) {
             $passports = Passport::where(function ($query) {
                 $query->where('name', 'Like', '%' . request('search') . '%');

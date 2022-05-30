@@ -28,13 +28,9 @@
                         <div class="col-lg-5 col-sm-12 col-md-5">
                             <span>Export</span>
                             <div class="button-group">
-                                <a href="{{  route('passport_export')  }}" class="btn waves-effect waves-light btn-success">
+                                <a href="{{ route('passport_export') }}" class="btn waves-effect waves-light btn-success">
                                     Export to Excel
                                 </a>
-
-                                <button type="button" class="btn waves-effect waves-light btn-success">
-                                    Export to PDF
-                                </button>
                             </div>
                         </div>
 
@@ -70,7 +66,6 @@
                     </div>
                 </div>
 
-
                 <div class="table-responsive py-3">
                     <span style="margin: 2px; font-weight: bold;">Total: {{ count($passports) }}</span>
                     <table class="table color-table success-table color-bordered-table muted-bordered-table">
@@ -78,28 +73,62 @@
                             <tr>
                                 <th style="width: 1%;">#</th>
                                 <th style="width: 5%; text-align: center;">Name</th>
-                                <th style="width: 5%; text-align: center;">Father Name</th>
+                                <th style="width: 1%; text-align: center;">M/F</th>
                                 <th style="width: 3%; text-align: center;">NRC</th>
-                                <th style="width: 3%; text-align: center;">Passport</th>
-                                <th style="width: 5%; text-align: center;">Passport Date</th>
-                                <th style="width: 5%; text-align: center;">Phone</th>
+                                <th style="width: 5%; text-align: center;">Father Name</th>
+                                <th style="width: 5%; text-align: center;">Date of Birth</th>
                                 <th style="width: 5%; text-align: center;">Address</th>
-                                <th style="width: 1%; text-align: center;">Gender</th>
+                                <th style="width: 3%; text-align: center;">Overseas Company</th>
+                                <th style="width: 3%; text-align: center;">Passport No</th>
+                                <th style="width: 5%; text-align: center;">Date of Passport</th>
+                                <th style="width: 5%; text-align: center;">OWIC</th>
+                                <th style="width: 5%; text-align: center;">Place of Passport</th>
+                                <th style="width: 5%; text-align: center;">Phone No</th>
                                 <th style="width: 1%; text-align: center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($passports as $key => $passport)
                                 <tr>
-                                    <td style="text-align: center;">{{ $key + 1 }}</td>
-                                    <td style="text-align: center;">{{ $passport->name }}</td>
-                                    <td style="text-align: center;">{{ $passport->father_name ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->nrc ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->passport ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->passport_date ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->phone ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ $passport->address ?? '-' }}</td>
-                                    <td style="text-align: center;">{{ ucfirst($passport->gender ?? '-') }}</td>
+                                    <td style="text-align: center;">
+                                        {{ $key + 1 }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->name }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ ucfirst($passport->gender ?? '-') }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->nrc ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->father_name ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->date_of_birth ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->address ?? '-' }}
+                                    </td>
+                                    <td>
+                                        Oversea Company
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->passport ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->passport_date ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->owic ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->place_of_passport ?? '-' }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $passport->phone ?? '-' }}
+                                    </td>
                                     <td style="text-align: center;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-success btn-sm dropdown-toggle"

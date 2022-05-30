@@ -103,13 +103,17 @@
                                             <div class="dropdown-menu">
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('contract.edit', $contract->id) }}">Edit</a>
-
-
-                                                <a class="dropdown-item"
                                                     href="{{ route('create_sending', $contract->demand_id) }}">
                                                     Sending
                                                 </a>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('add_labour', $contract->demand_id) }}">
+                                                    Labour Management
+                                                </a>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('contract.edit', $contract->id) }}">Edit</a>
 
                                                 <form action="{{ route('contract.destroy', $contract->id) }}"
                                                     method="POST">
