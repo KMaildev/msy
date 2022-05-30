@@ -66,8 +66,7 @@
 
 
                 <li>
-                    <a class="waves-effect waves-dark" href="{{ route('overseas_agent.index') }}"
-                        aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{ route('file_manager.index') }}" aria-expanded="false">
                         <span class="hide-menu">File Manager</span>
                     </a>
                 </li>

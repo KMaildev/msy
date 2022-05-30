@@ -36,6 +36,7 @@
 </script>
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
 
+
 @yield('script')
 <script type="text/javascript">
     $('.del_confirm').click(function(event) {
