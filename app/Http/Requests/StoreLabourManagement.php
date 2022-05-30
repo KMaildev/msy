@@ -26,6 +26,7 @@ class StoreLabourManagement extends FormRequest
         return [
             'demand_id' => 'required',
             'contract_id' => 'required',
+            'overseas_agencies_id' => 'required',
             'passport_id.*' => 'required',
         ];
     }

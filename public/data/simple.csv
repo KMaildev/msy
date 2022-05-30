@@ -1,3 +1,2 @@
-name,father_name,nrc,date_of_birth,passport,passport_date,local_agent_name,phone,address,gender,remark
-Soe Soe,U Soe Kyaw,5/(abc)009887,1.1.1995,EM 00001,01/01/2022,-,9444151665,Yangon,male,No
-,,,,,,,,,,
+name,gender,nrc,father_name,date_of_birth,address,passport,passport_date,local_agent_name,phone,place_of_passport,remark
+Soe Soe,male,5/(abc)009887,U Soe Kyaw,1.1.1995,Yangon,EM 00001,01/01/2022,-,9444151665,YGN,No

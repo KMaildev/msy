@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PassportExport;
 use App\Http\Requests\UpdateReject;
 use App\Models\Passport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RejectController extends Controller
 {
@@ -107,5 +109,15 @@ class RejectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function reject_passport_export()
+    {
+        $passports = Passport::where('reject_status', 'rejected')->get();
+        return Excel::download(new PassportExport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

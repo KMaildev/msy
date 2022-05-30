@@ -24,25 +24,21 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-4 col-sm-12 col-md-4">
-                            <span>Search</span>
-                            <form action="{{ route('new_demand.index') }}" method="GET" autocomplete="off">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Search..." name="search">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-lg-5 col-sm-12 col-md-5">
+                            <span>Export</span>
+                            <div class="button-group">
+                                <a href="{{ route('new_demand_export') }}"
+                                    class="btn waves-effect waves-light btn-success">
+                                    Export to Excel
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
 
                 <div class="table-responsive py-3">
-                    <span style="margin: 2px; font-weight: bold;">Total: </span>
+                    <span style="margin: 2px; font-weight: bold;">Total: {{ count($demands) }}</span>
                     <table class="table color-table success-table color-bordered-table muted-bordered-table">
                         <thead>
                             <tr>

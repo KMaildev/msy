@@ -13,11 +13,22 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                <i class="fa fa-power-off"></i>
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </li>
 
-                <li>
+                <li hidden>
                     <a class="waves-effect waves-dark" href="{{ route('home') }}" aria-expanded="false">
                         <span class="hide-menu">Dashboard</span>
                     </a>
@@ -66,7 +77,8 @@
 
 
                 <li>
-                    <a class="waves-effect waves-dark" href="{{ route('file_manager.index') }}" aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{ route('file_manager.index') }}"
+                        aria-expanded="false">
                         <span class="hide-menu">File Manager</span>
                     </a>
                 </li>

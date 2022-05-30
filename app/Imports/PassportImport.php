@@ -26,6 +26,7 @@ class PassportImport implements ToModel, WithHeadingRow
             'phone'    => $row['phone'],
             'address'    => $row['address'],
             'gender'    => $row['gender'],
+            'place_of_passport'    => $row['place_of_passport'],
             'remark'    => $row['remark'],
         ]);
     }

@@ -12,6 +12,7 @@
                 @csrf
                 <input type="hidden" name="demand_id" value="{{ $demand->id }}">
                 <input type="hidden" name="contract_id" value="{{ $demand->contracts_table->id }}">
+                <input type="hidden" name="overseas_agencies_id" value="{{ $demand->overseas_agencies_table->id }}">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive m-t-20">

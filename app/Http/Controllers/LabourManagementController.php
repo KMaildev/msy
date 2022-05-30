@@ -99,6 +99,7 @@ class LabourManagementController extends Controller
             $save->passport_id = $data['passport_id'][$i];
             $save->demand_id = $data['demand_id'];
             $save->contract_id =  $data['contract_id'];
+            $save->overseas_agencies_id =  $data['overseas_agencies_id'];
             $save->save();
         }
         return redirect()->back()->with('success', 'Process is completed.');

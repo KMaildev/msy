@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DemandExport;
 use App\Http\Requests\StoreDemand;
 use App\Http\Requests\UpdateDemand;
 use App\Models\Country;
 use App\Models\Demand;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NewDemandController extends Controller
 {
@@ -121,5 +123,15 @@ class NewDemandController extends Controller
         $passport = Demand::findOrFail($id);
         $passport->delete();
         return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function new_demand_export()
+    {
+        $demands = Demand::where('demand_status', 'new_demand')->get();
+        return Excel::download(new DemandExport($demands), 'demand_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

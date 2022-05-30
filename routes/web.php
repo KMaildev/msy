@@ -20,15 +20,18 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'PassportController@index')->name('home');
 
     Route::resource('passport', 'PassportController');
     Route::post('passport_import', 'PassportController@passport_import')->name('passport_import');
     Route::get('passport_export', 'PassportController@passport_export')->name('passport_export');
     Route::resource('owic', 'OwicController');
     Route::resource('reject', 'RejectController');
+    Route::get('reject_passport_export', 'RejectController@reject_passport_export')->name('reject_passport_export');
+
     Route::resource('new_demand', 'NewDemandController');
     Route::resource('old_demand', 'OldDemandController');
+    Route::get('new_demand_export', 'NewDemandController@new_demand_export')->name('new_demand_export');
 
     Route::resource('contract', 'ContractController');
     Route::get('create_contract/{id}', array('as' => 'create_contract', 'uses' => 'ContractController@create'));

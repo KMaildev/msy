@@ -112,7 +112,7 @@
                                         {{ $passport->address ?? '-' }}
                                     </td>
                                     <td>
-                                        Oversea Company
+                                        {{ $passport->labour_management_table->overseas_agencies_table->company_name ?? '' }}
                                     </td>
                                     <td style="text-align: center;">
                                         {{ $passport->passport ?? '-' }}
@@ -164,7 +164,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                     {!! $passports->links() !!}
                 </div>
             </div>

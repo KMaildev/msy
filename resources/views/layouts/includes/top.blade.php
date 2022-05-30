@@ -18,7 +18,7 @@
                 <li class="nav-item">
                     <form class="app-search d-none d-md-block d-lg-block" action="{{ route('passport.index') }}"
                         method="GET">
-                        <input type="text" class="form-control" placeholder="Search & enter" name="search">
+                        <input type="text" class="form-control" placeholder="Search: name or NRC" name="search">
                     </form>
                 </li>
             </ul>
