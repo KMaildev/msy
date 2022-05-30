@@ -122,13 +122,13 @@
                         <tr>
                             <th colspan="3">Total</th>
                             <th style="text-align: right; font-weight: bold">
-                                {{ $sending->sum('sending_male') }}
+                                {{ $sendings->sum('sending_male') }}
                             </th>
                             <th style="text-align: right; font-weight: bold">
-                                {{ $sending->sum('sending_female') }}
+                                {{ $sendings->sum('sending_female') }}
                             </th>
                             <th style="text-align: right; font-weight: bold">
-                                {{ $sending->sum('sending_male') + $sending->sum('sending_female') }}
+                                {{ $sendings->sum('sending_male') + $sendings->sum('sending_female') }}
                             </th>
                         </tr>
                     </table>
