@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('labour_management', 'LabourManagementController');
     Route::get('add_labour/{id}', array('as' => 'add_labour', 'uses' => 'LabourManagementController@create'));
+    Route::get('view_contract_labour/{id}', array('as' => 'view_contract_labour', 'uses' => 'LabourManagementController@view_contract_labour'));
+    Route::get('store_labour', array('as' => 'store_labour', 'uses' => 'LabourManagementController@store_labour'));
+    Route::get('delete_labour/{id}', array('as' => 'delete_labour', 'uses' => 'LabourManagementController@delete_labour'));
 
     Route::view('/file_manager', 'file_manager.index')->name('file_manager.index');
 });

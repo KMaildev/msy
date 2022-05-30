@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLabourManagement;
 use App\Models\Demand;
+use App\Models\LabourManagement;
 use App\Models\Passport;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,9 @@ class LabourManagementController extends Controller
     {
         $demand = Demand::findOrFail($id);
         $passports = Passport::where('reject_status', NULL)->get();
-        return view('labour_management.create', compact('demand', 'passports'));
+
+        $contract_labours = LabourManagement::where('demand_id', $id)->get();
+        return view('labour_management.create', compact('demand', 'passports', 'contract_labours'));
     }
 
     /**
@@ -83,6 +87,37 @@ class LabourManagementController extends Controller
      */
     public function destroy($id)
     {
-        //
+    }
+
+
+    public function store_labour(StoreLabourManagement $request)
+    {
+        $data = $request->except('_token');
+        $passport_id = count($data['passport_id']);
+        for ($i = 0; $i < $passport_id; $i++) {
+            $save = new LabourManagement();
+            $save->passport_id = $data['passport_id'][$i];
+            $save->demand_id = $data['demand_id'];
+            $save->contract_id =  $data['contract_id'];
+            $save->save();
+        }
+        return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+
+    public function view_contract_labour($id = null)
+    {
+        $demand = Demand::findOrFail($id);
+        $passports = Passport::where('reject_status', NULL)->get();
+
+        $contract_labours = LabourManagement::where('demand_id', $id)->get();
+        return view('labour_management.view_contract_labour', compact('demand', 'passports', 'contract_labours'));
+    }
+
+    public function delete_labour($id)
+    {
+        $labour = LabourManagement::findOrFail($id);
+        $labour->delete();
+        return redirect()->back()->with('success', 'Process is completed.');
     }
 }

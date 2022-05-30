@@ -109,7 +109,12 @@
 
                                                 <a class="dropdown-item"
                                                     href="{{ route('add_labour', $contract->demand_id) }}">
-                                                    Labour Management
+                                                    Contract Labour
+                                                </a>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('view_contract_labour', $contract->demand_id) }}">
+                                                    View Contract Labour
                                                 </a>
 
                                                 <a class="dropdown-item"

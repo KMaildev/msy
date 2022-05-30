@@ -71,6 +71,7 @@
 
 
     // DataTable
+
     $(function() {
         $('#myTable').DataTable();
         var table = $('#example').DataTable({
@@ -110,7 +111,12 @@
         });
         // responsive table
         $('#config-table').DataTable({
-            responsive: true
+            responsive: true,
+            pageLength: 5,
+            lengthMenu: [
+                [5, 10, 20, -1],
+                [5, 10, 20, 'All']
+            ]
         });
 
         $('#example23').DataTable({
