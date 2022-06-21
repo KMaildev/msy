@@ -18,12 +18,24 @@ class OldDemandController extends Controller
      */
     public function index()
     {
+
         $demands = Demand::where('demand_status', 'old_demand')->paginate(1000);
         if (request('search')) {
-            $demands = Demand::where(function ($query) {
-                $query->where('company_name', 'Like', '%' . request('search') . '%');
-            })->paginate(1000);
+            $search = request('search');
+            $demands = Demand::whereHas('overseas_agencies_table', function ($q) use ($search) {
+                $q->where('company_name', 'LIKE', '%' . $search . '%');
+                $q->orWhere('type_of_company', 'LIKE', '%' . $search . '%');
+                $q->orWhere('company_phone', 'LIKE', '%' . $search . '%');
+                $q->orWhere('company_address', 'LIKE', '%' . $search . '%');
+            })->get();
         }
+
+        if (request('from_date') && request('to_date')) {
+            $from_date = request('from_date');
+            $to_date = request('to_date');
+            $demands = Demand::whereBetween('demand_date', [$from_date, $to_date])->get();
+        }
+
         return view('old_demand.index', compact('demands'));
     }
 
