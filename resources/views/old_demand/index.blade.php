@@ -327,16 +327,15 @@
                                                     </a>
 
                                                     <a class="dropdown-item"
-                                                        href="{{ route('new_demand.edit', $demand->id) }}">Edit</a>
+                                                        href="{{ route('old_demand.edit', $demand->id) }}">Edit</a>
 
-                                                    <form action="{{ route('new_demand.destroy', $demand->id) }}"
+                                                    <form action="{{ route('old_demand.destroy', $demand->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button" class="dropdown-item del_confirm"
                                                             id="confirm-text" data-toggle="tooltip">Delete</button>
                                                     </form>
-
                                                 </div>
                                             </div>
                                         </td>
