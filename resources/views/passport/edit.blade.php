@@ -19,8 +19,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group @error('name') has-danger @enderror">
                                         <label class="form-label">Name</label>
-                                        <input type="text" class="form-control @error('name') form-control-danger @enderror"
-                                            name="name" value="{{ $passport->name }}">
+                                        <input type="text"
+                                            class="form-control @error('name') form-control-danger @enderror" name="name"
+                                            value="{{ $passport->name }}">
                                         @error('name')
                                             <div class="form-control-feedback"> {{ $message }} </div>
                                         @enderror
@@ -40,7 +41,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group @error('nrc') has-danger @enderror">
                                         <label class="form-label">NRC</label>
-                                        <input type="text" class="form-control" name="nrc" value="{{ $passport->nrc }}">
+                                        <input type="text" class="form-control" name="nrc"
+                                            value="{{ $passport->nrc }}">
                                         @error('nrc')
                                             <div class="form-control-feedback"> {{ $message }} </div>
                                         @enderror

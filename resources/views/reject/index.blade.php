@@ -30,7 +30,8 @@
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" placeholder="Search: Name or NRC"
                                                 name="search">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                            <button class="btn btn-success" type="submit"
+                                                id="button-addon2">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +46,8 @@
                                         <div class="input-group mb-3">
                                             <input type="date" class="form-control" name="from_date">
                                             <input type="date" class="form-control" name="to_date">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                            <button class="btn btn-success" type="submit"
+                                                id="button-addon2">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -111,8 +113,9 @@
                                                     </form>
 
                                                     <a class="dropdown-item"
-                                                        href="{{ route('passport.edit', $passport->id) }}">View
-                                                        Detail</a>
+                                                        href="{{ route('passport.show', $passport->id) }}">
+                                                        View Detail
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>

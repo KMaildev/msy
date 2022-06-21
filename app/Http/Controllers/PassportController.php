@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PassportDetailExport;
 use App\Exports\PassportExport;
 use App\Http\Requests\StorePassport;
 use App\Http\Requests\UpdatePassport;
@@ -86,7 +87,8 @@ class PassportController extends Controller
      */
     public function show($id)
     {
-        //
+        $passport = Passport::findOrFail($id);
+        return view('passport.show', compact('passport'));
     }
 
     /**
@@ -159,5 +161,12 @@ class PassportController extends Controller
     {
         $passports = Passport::all();
         return Excel::download(new PassportExport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
+    }
+
+
+    public function passport_detail_export($id)
+    {
+        $passport = Passport::findOrFail($id);
+        return Excel::download(new PassportDetailExport($passport), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

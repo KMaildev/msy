@@ -27,8 +27,7 @@
                                                         <div class="form-group @error('company_name') has-danger @enderror">
                                                             <label class="form-label">Company Name</label>
                                                             <select class="form-control form-select" name="company_name">
-                                                                <option value="MSYN">MSYN</option>
-                                                                <option value="MP">MP</option>
+                                                                <option value="Office 1">Office 1</option>
                                                             </select>
                                                             @error('company_name')
                                                                 <div class="form-control-feedback" style="color: red;">

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LabourManagementExport;
 use App\Http\Requests\StoreLabourManagement;
 use App\Models\Demand;
 use App\Models\LabourManagement;
 use App\Models\Passport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LabourManagementController extends Controller
 {
@@ -120,5 +122,15 @@ class LabourManagementController extends Controller
         $labour = LabourManagement::findOrFail($id);
         $labour->delete();
         return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function export_contract_labour($id)
+    {
+        $contract_labours = LabourManagement::where('demand_id', $id)->get();
+        return Excel::download(new LabourManagementExport($contract_labours), 'labour_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

@@ -28,11 +28,9 @@
                                                         <div class="form-group @error('company_name') has-danger @enderror">
                                                             <label class="form-label">Company Name</label>
                                                             <select class="form-control form-select" name="company_name">
-                                                                <option value="MSYN"
-                                                                    @if ($demand->company_name == 'MSYN') checked @endif>MSYN
-                                                                </option>
-                                                                <option value="MP"
-                                                                    @if ($demand->company_name == 'MP') checked @endif>MP
+                                                                <option value="Office 1"
+                                                                    @if ($demand->company_name == 'Office 1') checked @endif>
+                                                                    Office 1
                                                                 </option>
                                                             </select>
                                                             @error('company_name')

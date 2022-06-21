@@ -34,5 +34,12 @@
         href="{{ asset('design/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}">
 </head>
 
+<style>
+    .demand_table {
+        background-color: green;
+        color: white;
+    }
+</style>
+
 <body class="horizontal-nav skin-megna fixed-layout">
     <div id="main-wrapper">

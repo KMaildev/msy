@@ -78,7 +78,8 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group @error('nrc') has-danger @enderror">
                                                                     <label class="form-label">NRC</label>
-                                                                    <input type="text" class="form-control" name="nrc">
+                                                                    <input type="text" class="form-control"
+                                                                        name="nrc">
                                                                     @error('nrc')
                                                                         <div class="form-control-feedback"> {{ $message }}
                                                                         </div>
@@ -155,7 +156,8 @@
                                                                 <div
                                                                     class="form-group @error('phone') has-danger @enderror">
                                                                     <label class="form-label">Phone</label>
-                                                                    <input type="text" class="form-control" name="phone">
+                                                                    <input type="text" class="form-control"
+                                                                        name="phone">
                                                                     @error('phone')
                                                                         <div class="form-control-feedback"> {{ $message }}
                                                                         </div>
@@ -171,7 +173,8 @@
                                                                     <input type="text" class="form-control"
                                                                         name="address">
                                                                     @error('address')
-                                                                        <div class="form-control-feedback"> {{ $message }}
+                                                                        <div class="form-control-feedback">
+                                                                            {{ $message }}
                                                                         </div>
                                                                     @enderror
                                                                 </div>
@@ -181,14 +184,16 @@
                                                                 <div class="form-group">
                                                                     <label class="form-label">Gender</label>
                                                                     <div class="custom-control custom-radio">
-                                                                        <input type="radio" id="male" value="male"
-                                                                            name="gender" class="form-check-input" checked>
+                                                                        <input type="radio" id="male"
+                                                                            value="male" name="gender"
+                                                                            class="form-check-input" checked>
                                                                         <label class="form-check-label"
                                                                             for="male">Male</label>
                                                                     </div>
                                                                     <div class="custom-control custom-radio">
-                                                                        <input type="radio" id="female" value="female"
-                                                                            name="gender" class="form-check-input">
+                                                                        <input type="radio" id="female"
+                                                                            value="female" name="gender"
+                                                                            class="form-check-input">
                                                                         <label class="form-check-label"
                                                                             for="female">Female</label>
                                                                     </div>
@@ -199,9 +204,11 @@
                                                                 <div
                                                                     class="form-group @error('remark') has-danger @enderror">
                                                                     <label class="form-label">Remark</label>
-                                                                    <input type="text" class="form-control" name="remark">
+                                                                    <input type="text" class="form-control"
+                                                                        name="remark">
                                                                     @error('remark')
-                                                                        <div class="form-control-feedback"> {{ $message }}
+                                                                        <div class="form-control-feedback">
+                                                                            {{ $message }}
                                                                         </div>
                                                                     @enderror
                                                                 </div>

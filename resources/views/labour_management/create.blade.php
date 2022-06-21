@@ -90,8 +90,12 @@
                     Contract Labours
                 </h4>
             </div>
+
             <div class="card">
                 <div class="card-body">
+                    <a href="{{ route('export_contract_labour', $demand->id) }}" class="btn btn-success btn-sm">
+                        Export to Excel
+                    </a>
                     <div class="table-responsive m-t-20">
                         <table class="table display table-striped border">
                             <thead>

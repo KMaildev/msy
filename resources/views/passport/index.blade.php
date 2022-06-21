@@ -42,7 +42,8 @@
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" placeholder="Search: Name or NRC"
                                                 name="search">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                            <button class="btn btn-success" type="submit"
+                                                id="button-addon2">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -50,14 +51,15 @@
                         </div>
 
                         <div class="col-lg-4 col-sm-12 col-md-4">
-                            <span>Filter Search</span>
+                            <span>Filter Search (Join Date)</span>
                             <form action="{{ route('passport.index') }}" method="GET" autocomplete="off">
                                 <div class="form-group">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <input type="date" class="form-control" name="from_date">
                                             <input type="date" class="form-control" name="to_date">
-                                            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                            <button class="btn btn-success" type="submit"
+                                                id="button-addon2">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -155,8 +157,9 @@
                                                 </form>
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('passport.edit', $passport->id) }}">View
-                                                    Detail</a>
+                                                    href="{{ route('passport.show', $passport->id) }}">
+                                                    View Detail
+                                                </a>
                                             </div>
                                         </div>
                                     </td>

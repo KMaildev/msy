@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -25,6 +14,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('passport', 'PassportController');
     Route::post('passport_import', 'PassportController@passport_import')->name('passport_import');
     Route::get('passport_export', 'PassportController@passport_export')->name('passport_export');
+    Route::get('passport_detail_export/{id}', array('as' => 'passport_detail_export', 'uses' => 'PassportController@passport_detail_export'));
+
+
     Route::resource('owic', 'OwicController');
     Route::resource('reject', 'RejectController');
     Route::get('reject_passport_export', 'RejectController@reject_passport_export')->name('reject_passport_export');
@@ -50,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('view_contract_labour/{id}', array('as' => 'view_contract_labour', 'uses' => 'LabourManagementController@view_contract_labour'));
     Route::get('store_labour', array('as' => 'store_labour', 'uses' => 'LabourManagementController@store_labour'));
     Route::get('delete_labour/{id}', array('as' => 'delete_labour', 'uses' => 'LabourManagementController@delete_labour'));
+    Route::get('export_contract_labour/{id}', array('as' => 'export_contract_labour', 'uses' => 'LabourManagementController@export_contract_labour'));
 
     Route::view('/file_manager', 'file_manager.index')->name('file_manager.index');
 });
